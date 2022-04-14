@@ -6,10 +6,13 @@ You will be able to fill out the data sheet with your name, weight, height, spec
 The aim of this game is to create a style sheet that best represents your fantasy character, that you can save, share, print and bring into your fantasy campaings. You will also be abe to be bring your character to play the click your next adventure game. 
 
 
-#Timeline
-##Coding Overall Functionality 4/13-4/24
+Timeline
+Coding Overall Functionality 4/13-4/24
+
 Making and Implementing Assets/Art 4/10-4/23
+
 Debugging and Testing Software 4/23-4/26
+
 Additional Features and Finishing Touches 4/23-426
 
 #P5.js Library inspiration https://github.com/Lartu/p5.clickable
