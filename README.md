@@ -15,5 +15,4 @@ Additional Features and Finishing Touches 4/23-426
 #P5.js Library inspiration https://github.com/Lartu/p5.clickable
 
 
-![image](https://user-images.githubusercontent.com/67163039/163287645-e2920532-fdc4-4dc8-b6a4-fea1853554fc.png)
 
