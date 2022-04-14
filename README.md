@@ -1,5 +1,5 @@
 # Avatar Building Game
-##By Juan Serna
+By Juan Serna
 ### In this game you will be able to create various avatars using pre designed assets on a blank avatar face. Choose features from Orks, Elves, Humans and Dawrfs. Chose your head features, sets of eye noses and ears. Even a beard if you so choose. 
 I will design the game in P5Js using open libraries. The design will be of dran images created by me for this game. 
 You will be able to fill out the data sheet with your name, weight, height, species, gender, and faction. 
