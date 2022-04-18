@@ -380,8 +380,8 @@ function draw() {
 
 function title() {
   //background(100);
-  firstPage. image = firstPage, 0, 0;
-  
+  //firstPage. image = firstPage, 0, 0;
+
 
   textSize(40);
   stroke(255);
