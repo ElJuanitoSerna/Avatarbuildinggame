@@ -50,15 +50,6 @@ var rightBottom;
 var rightCenter;
 var rightTop;
 var screenCap;
-var radius;
-var c;
-var slider;
-var eraser;
-var changeBG;
-var checkbox;
-
-
-
 
 
 function preload() {
@@ -86,21 +77,10 @@ function preload() {
   rightCenter = loadImage("Assets/Humaneyes.png")
   rightTop = loadImage("Assets/humanhead.png")
   screenCap = loadImage("Assets/screengrabcam.png")
-  cursorImg = loadImage ("Assets/brushtwo.png")
 }
 
 function setup() {
   cnv = createCanvas(1400, 800);
-  createP();
-  slider = createSlider(1, 20, 10);
-  eraser = createButton("clear");
-  eraser.mousePressed(changeBG);
-  checkbox = createCheckbox('Erase', false);
-  c = color(255, 0, 0);
-  background(545);
-  colorMode(RGB)
-  createColorPicker();
-
   //image (firstPage,0,0);//cnv.mouseClicked(canvasClicked);//Create, style and resize clickables.
   click1 = new Clickable();
   click1.locate(20, 20);
@@ -387,18 +367,8 @@ function setup() {
 
 
 function draw() {
-  radius = slider.value();
   switch (state) {
     case 'title':
-    function mouseClicked() {
-  if (mouseX > 400) {
-    c = get(mouseX, mouseY);
-checkbox.checked(false);
-  }else{
-    stampRectangle(c);
-  }
-}
-
       title();
       cnv.mouseClicked(titleMouseClicked);
       break;
@@ -437,7 +407,6 @@ function level1() {
   textSize(30);
   text('GAME', 100, 100);
   avatarBuild()
-  image(cursorImg, mouseX, mouseY);
 
 }
 
@@ -458,76 +427,7 @@ function end() {
 function endMouseClicked() {
   console.log('canvas is clicked on end');
 }
-function mouseClicked() {
-  if (mouseX > 400) {
-    c = get(mouseX, mouseY);
-checkbox.checked(false);
-  }else{
-    stampRectangle(c);
-  }
-}
 
-function mouseDragged() {
-  if (checkbox.checked()){
-    stroke(255);
-  }else{
-    stroke(c)
-  }
-  if (mouseX < 390) {
-    strokeWeight(slider.value());
-    line(mouseX, mouseY, pmouseX, pmouseY);
-  }
-}
-
-function changeBG() {
-  background(255);
-  createColorPicker()
-}
-
-function createColorPicker() {
-  colorPicker = createImage(100, height);
-  var myWidth = colorPicker.width/3
-  colorPicker.loadPixels()
-  from = color(0, 255, 0);
-  to = color(255, 0, 0);
-  console.log(hue(from))
-  for (var y = 0; y < height; y++) {
-    for (x = 0; x < myWidth; x++) {
-      color1 = lerpColor(from, to, y / height)
-      colorPicker.set(x, y, color1)
-    }
-  }
-  from = color(0, 0, 255);
-  to = color(0, 255, 0);
-  console.log(hue(from))
-  for (var y = 0; y < height; y++) {
-    for (x = myWidth; x < myWidth* 2; x++) {
-      color1 = lerpColor(from, to, y / height)
-      colorPicker.set(x, y, color1)
-    }
-  }
-  from = color(255, 0, 0);
-  to = color(0, 255, 255);
-  console.log(hue(from))
-  for (var y = 0; y < height; y++) {
-    for (x = myWidth*2; x < myWidth * 3; x++) {
-      color1 = lerpColor(from, to, y / height)
-      colorPicker.set(x, y, color1)
-    }
-  }
-  colorPicker.updatePixels()
-  image(colorPicker, 400, 0)
-}
-
-function stampRectangle(c){
-  fill(c)
-  noStroke()
-  rect(mouseX,mouseY,slider.value(),slider.value())
-}
-
-function eraserSwitch(){
- //
-}
 function gameScreen() {
   background(217, 176, 67);
   backGroundImage.draw();
