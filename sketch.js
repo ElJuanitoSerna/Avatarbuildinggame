@@ -50,13 +50,16 @@ var rightBottom;
 var rightCenter;
 var rightTop;
 var screenCap;
-var radius;
-var c;
-var slider;
-var eraser;
-var changeBG;
-var checkbox;
-
+//var radius;
+//var c;
+//var eraser;
+//var changeBG;
+//var checkbox;
+var backGroundT;
+var avatarTop;
+var avatarMiddle;
+var avatarBottom;
+var cursorImg;
 
 
 
@@ -86,20 +89,25 @@ function preload() {
   rightCenter = loadImage("Assets/Humaneyes.png")
   rightTop = loadImage("Assets/humanhead.png")
   screenCap = loadImage("Assets/screengrabcam.png")
-  cursorImg = loadImage ("Assets/brushtwo.png")
+  cursorImg = loadImage("Assets/brushtwo.png")
+  backGroundT = loadImage("Assets/backgroundtrans.png")
 }
 
 function setup() {
   cnv = createCanvas(1400, 800);
-  createP();
-  slider = createSlider(1, 20, 10);
-  eraser = createButton("clear");
-  eraser.mousePressed(changeBG);
-  checkbox = createCheckbox('Erase', false);
-  c = color(255, 0, 0);
-  background(545);
-  colorMode(RGB)
-  createColorPicker();
+  //createP();
+  //slider = createSlider(1, 20, 10);
+  //eraser = createButton("clear");
+  //eraser.mousePressed(changeBG);
+  //checkbox = createCheckbox('Erase', false);
+  //c = color(255, 0, 0);
+  //background(545);
+  //colorMode(RGB)
+  //createColorPicker();
+  avatarTop = backGroundT;
+  avatarMiddle = backGroundT;
+  avatarBottom = backGroundT;
+
 
   //image (firstPage,0,0);//cnv.mouseClicked(canvasClicked);//Create, style and resize clickables.
   click1 = new Clickable();
@@ -126,27 +134,7 @@ function setup() {
   click1.onRelease = function() {
     this.x += 200;
   };
-  // information Banner
-  informationBanner = new Clickable();
-  informationBanner.cornerRadius = 40;
-  informationBanner.image = ageWeight;
-  informationBanner.locate(598, 22);
-  informationBanner.resize(780, 100);
-  informationBanner.text = "";
-  //informationBanner.onHover = function() {
-  //informationBanner.image = woodbackgroundImg;
-  //};
-  informationBanner.onOutside = function() {
-    this.color = "#FFFFFF";
-    this.noTint = true;
-  };
-  //NAME BANNER
-  nameBanner = new Clickable();
-  nameBanner.image = nameRace;
-  nameBanner.cornerRadius = 40;
-  nameBanner.locate(60, 20);
-  nameBanner.resize(500, 100);
-  nameBanner.text = "";
+
   // SCREEN GRAB
   screenGrab = new Clickable();
   screenGrab.image = screenCap;
@@ -161,6 +149,7 @@ function setup() {
   };
   screenGrab.onPress = function() {
     saveCanvas();
+    state = "end";
   };
 
   screenGrab.onOutside = function() {
@@ -178,62 +167,6 @@ function setup() {
   clickNextAdventure.onOutside = function() {
     clickNextAdventure.imageScale = 1;
   };
-  //character design add picture
-  avatarBuild = new Clickable();
-  avatarBuild.cornerRadius = 40;
-
-  //avatarBuild.image = fullPractice;
-  avatarBuild.textScaled = true;
-  avatarBuild.text = "";
-  avatarBuild.locate(80, 135);
-  avatarBuild.resize(440, 560);
-  avatarBuild.onOutside = function() {
-    this.color = "#FFFFFF]]]";
-
-
-
-  };
-  //avatarBuild.onHover = function () {
-  //avaterBuild.image = rightBottom;
-  //}
-  //avatarBuild.onPress = function() {
-  //alert("Your Avatar goes here");
-  //};
-  //behind character attributes add wood
-
-  backGroundImage = new Clickable();
-  backGroundImage.image = woodbackgroundImg;
-  backGroundImage.cornerRadius = 40;
-  backGroundImage.textScaled = true;
-  backGroundImage.text = "";
-  backGroundImage.locate(8, 10);
-  backGroundImage.resize(1383, 780);
-  backGroundImage.onOutside = function() {
-    this.color = "#FFFFFF";
-  };
-
-  backGroundImage.onPress = function() {
-    alert("TIME TO DESIGN");
-  };
-  //behind character attributes
-  behindAttributes = new Clickable();
-  behindAttributes.cornerRadius = 40;
-  behindAttributes.image = oldPaper;
-  behindAttributes.textScaled = true;
-  behindAttributes.text = "";
-  behindAttributes.locate(600, 158);
-  behindAttributes.resize(780, 566);
-
-  behindAttributes.onOutside = function() {
-    //this.color = "#FFFFFF";
-  };
-  //behindAttributes.onHover = function () {
-  this.color = "#7D0C0C";
-  //};
-  behindAttributes.onPress = function() {
-    alert("TIME TO DESIGN");
-  };
-
 
   //top Right Head
   headTopRight = new Clickable();
@@ -250,7 +183,9 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-
+  headTopRight. onPress = function(){
+    avatarTop = rightTop;
+  }
   // middle right
   rightMiddleFace = new Clickable();
   rightMiddleFace.image = rightCenter;
@@ -266,6 +201,9 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
+  rightMiddleFace. onPress = function(){
+    avatarMiddle = rightCenter;
+  }
   //bottom right
   bottomRightFace = new Clickable();
   bottomRightFace.image = rightBottom;
@@ -283,6 +221,9 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
+  bottomRightFace. onPress = function(){
+    avatarBottom = rightBottom;
+  }
   //bottom middle
   bottomMiddleFace = new Clickable();
   bottomMiddleFace.image = centerBottom;
@@ -295,13 +236,14 @@ function setup() {
   //this.tint = "#FF0000";
   //};
   //bottomMiddleFace.onPress = function(){
-  //avatarBuild = centerBottom;
-  //};
 
   bottomMiddleFace.onOutside = function() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
+  bottomMiddleFace. onPress = function(){
+    avatarBottom = centerBottom;
+  }
   //middle center
   centerMiddleFace = new Clickable();
   centerMiddleFace.image = centerMiddle;
@@ -317,6 +259,10 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
+  centerMiddleFace. onPress = function(){
+    avatarMiddle = centerMiddle;
+  }
+
   //Head middle
   headMiddle = new Clickable();
   headMiddle.image = centerTop;
@@ -333,6 +279,9 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
+  headMiddle. onPress = function(){
+    avatarTop = centerTop;
+  }
 
   //Head left
   headLeft = new Clickable();
@@ -350,7 +299,9 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-
+ headLeft. onPress = function(){
+   avatarTop = elfHair;
+ }
   //left middle
   leftMiddle = new Clickable();
   //headLeft.cornerRadius = 10;
@@ -367,6 +318,9 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
+  leftMiddle. onPress = function(){
+    avatarMiddle = eyePractice;
+  }
   //left middle
   leftBottom = new Clickable();
   //headLeft.cornerRadius = 10;
@@ -383,28 +337,33 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
+
+  leftBottom. onPress = function(){
+    avatarBottom = bottomLeft
+  };
 }
 
 
 function draw() {
-  radius = slider.value();
+  //radius = slider.value();
   switch (state) {
     case 'title':
-    function mouseClicked() {
-  if (mouseX > 400) {
-    c = get(mouseX, mouseY);
-checkbox.checked(false);
-  }else{
-    stampRectangle(c);
-  }
-}
+      function mouseClicked() {
+        if (mouseX > 400) {
+          c = get(mouseX, mouseY);
+          checkbox.checked(false);
+        } else {
+          stampRectangle(c);
+        }
+      }
 
       title();
       cnv.mouseClicked(titleMouseClicked);
       break;
     case 'level 1':
       gameScreen();
-      cnv.mouseClicked(level1MouseClicked);
+      //cnv.mouseClicked(level1MouseClicked);
+
       break;
     case 'end':
       end();
@@ -443,7 +402,7 @@ function level1() {
 
 function level1MouseClicked() {
   console.log('canvas is clicked on level 1');
-  state = 'end'
+  state = 'title'
 }
 
 function end() {
@@ -456,84 +415,95 @@ function end() {
 }
 
 function endMouseClicked() {
+  state = "end";
   console.log('canvas is clicked on end');
 }
-function mouseClicked() {
-  if (mouseX > 400) {
-    c = get(mouseX, mouseY);
-checkbox.checked(false);
-  }else{
-    stampRectangle(c);
-  }
-}
 
-function mouseDragged() {
-  if (checkbox.checked()){
-    stroke(255);
-  }else{
-    stroke(c)
-  }
-  if (mouseX < 390) {
-    strokeWeight(slider.value());
-    line(mouseX, mouseY, pmouseX, pmouseY);
-  }
-}
+//function mouseClicked() {
+  //if (mouseX > 400) {
+    //c = get(mouseX, mouseY);
+    //checkbox.checked(false);
+  //} else {
+    //stampRectangle(c);
+  //}
+//}
+
+//function mouseDragged() {
+  //if (checkbox.checked()) {
+    //stroke(255);
+  //} else {
+    //stroke(c)
+  //}
+  //if (mouseX < 390) {
+    //strokeWeight(slider.value());
+    //line(mouseX, mouseY, pmouseX, pmouseY);
+  //}
+//}
 
 function changeBG() {
   background(255);
-  createColorPicker()
+  //createColorPicker()
 }
 
-function createColorPicker() {
-  colorPicker = createImage(100, height);
-  var myWidth = colorPicker.width/3
-  colorPicker.loadPixels()
-  from = color(0, 255, 0);
-  to = color(255, 0, 0);
-  console.log(hue(from))
-  for (var y = 0; y < height; y++) {
-    for (x = 0; x < myWidth; x++) {
-      color1 = lerpColor(from, to, y / height)
-      colorPicker.set(x, y, color1)
-    }
-  }
-  from = color(0, 0, 255);
-  to = color(0, 255, 0);
-  console.log(hue(from))
-  for (var y = 0; y < height; y++) {
-    for (x = myWidth; x < myWidth* 2; x++) {
-      color1 = lerpColor(from, to, y / height)
-      colorPicker.set(x, y, color1)
-    }
-  }
-  from = color(255, 0, 0);
-  to = color(0, 255, 255);
-  console.log(hue(from))
-  for (var y = 0; y < height; y++) {
-    for (x = myWidth*2; x < myWidth * 3; x++) {
-      color1 = lerpColor(from, to, y / height)
-      colorPicker.set(x, y, color1)
-    }
-  }
-  colorPicker.updatePixels()
-  image(colorPicker, 400, 0)
-}
+//function createColorPicker() {
+  //colorPicker = createImage(100, height);
+  //var myWidth = colorPicker.width / 3
+  //colorPicker.loadPixels()
+  //from = color(0, 255, 0);
+  //to = color(255, 0, 0);
+  //console.log(hue(from))
+  //for (var y = 0; y < height; y++) {
+    //for (x = 0; x < myWidth; x++) {
+      //color1 = lerpColor(from, to, y / height)
+      //colorPicker.set(x, y, color1)
+    //}
+  //}
+  //from = color(0, 0, 255);
+  //to = color(0, 255, 0);
+  //console.log(hue(from))
+  //for (var y = 0; y < height; y++) {
+    //for (x = myWidth; x < myWidth * 2; x++) {
+      //color1 = lerpColor(from, to, y / height)
+      //colorPicker.set(x, y, color1)
+    //}
+  //}
+  //from = color(255, 0, 0);
+  //to = color(0, 255, 255);
+  //console.log(hue(from))
+  //for (var y = 0; y < height; y++) {
+    //for (x = myWidth * 2; x < myWidth * 3; x++) {
+      //color1 = lerpColor(from, to, y / height)
+      //colorPicker.set(x, y, color1)
+  //  }
+//  }
+  //colorPicker.updatePixels()
+  //image(colorPicker, 400, 0)
+//}
 
-function stampRectangle(c){
-  fill(c)
-  noStroke()
-  rect(mouseX,mouseY,slider.value(),slider.value())
-}
+//function stampRectangle(c) {
+  //fill(c)
+  //noStroke()
+  //rect(mouseX, mouseY, slider.value(), slider.value())
+//}
 
-function eraserSwitch(){
- //
-}
+//function eraserSwitch() {
+  //
+//}
+
 function gameScreen() {
   background(217, 176, 67);
-  backGroundImage.draw();
-  //click1.draw();
-  avatarBuild.draw();
-  behindAttributes.draw();
+  //backGroundImage.draw();
+  image(woodbackgroundImg, 8, 10, 1383, 780 );
+  image(ageWeight, 598, 22,780, 100);
+  image(oldPaper,600, 158, 780, 566);
+  image(nameRace,60, 20,500, 100);
+  image(oldPaper,80, 135,440, 560);
+  image(avatarTop, 80, 130,425,425);
+  image(avatarMiddle,80,150,425,425);
+  image(avatarBottom,80,170,425,425);
+  //image(backGroundT,)
+  //image(backGroundT,)
+
   headTopRight.draw();
   leftBottom.draw();
   clickNextAdventure.draw();
@@ -545,7 +515,14 @@ function gameScreen() {
   headLeft.draw();
   centerMiddleFace.draw();
   headMiddle.draw();
-  informationBanner.draw();
-  nameBanner.draw();
+  //image(backGroundT,200, 200,180,180)
+
+
+  //image()
+  //click1.draw();
+  //avatarBuild.draw();
+  //behindAttributes.draw();
+  //informationBanner.draw();
+  //nameBanner.draw();
 
 }
