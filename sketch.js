@@ -60,7 +60,11 @@ var avatarTop;
 var avatarMiddle;
 var avatarBottom;
 var cursorImg;
-
+var input;
+var input2;
+var input3;
+var input4;
+var input5;
 
 
 
@@ -95,6 +99,11 @@ function preload() {
 
 function setup() {
   cnv = createCanvas(1400, 800);
+  input = createInput("  name")
+  input2 = createInput("race")
+  input3 = createInput(" age")
+  input4 = createInput(" weight")
+  input5 = createInput(" height")
   //createP();
   //slider = createSlider(1, 20, 10);
   //eraser = createButton("clear");
@@ -183,7 +192,7 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-  headTopRight. onPress = function(){
+  headTopRight.onPress = function() {
     avatarTop = rightTop;
   }
   // middle right
@@ -201,7 +210,7 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-  rightMiddleFace. onPress = function(){
+  rightMiddleFace.onPress = function() {
     avatarMiddle = rightCenter;
   }
   //bottom right
@@ -221,7 +230,7 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-  bottomRightFace. onPress = function(){
+  bottomRightFace.onPress = function() {
     avatarBottom = rightBottom;
   }
   //bottom middle
@@ -241,7 +250,7 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-  bottomMiddleFace. onPress = function(){
+  bottomMiddleFace.onPress = function() {
     avatarBottom = centerBottom;
   }
   //middle center
@@ -259,7 +268,7 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-  centerMiddleFace. onPress = function(){
+  centerMiddleFace.onPress = function() {
     avatarMiddle = centerMiddle;
   }
 
@@ -279,7 +288,7 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-  headMiddle. onPress = function(){
+  headMiddle.onPress = function() {
     avatarTop = centerTop;
   }
 
@@ -299,9 +308,9 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
- headLeft. onPress = function(){
-   avatarTop = elfHair;
- }
+  headLeft.onPress = function() {
+    avatarTop = elfHair;
+  }
   //left middle
   leftMiddle = new Clickable();
   //headLeft.cornerRadius = 10;
@@ -318,7 +327,7 @@ function setup() {
     this.color = "#FFFFFF";
     this.noTint = true;
   };
-  leftMiddle. onPress = function(){
+  leftMiddle.onPress = function() {
     avatarMiddle = eyePractice;
   }
   //left middle
@@ -338,7 +347,7 @@ function setup() {
     this.noTint = true;
   };
 
-  leftBottom. onPress = function(){
+  leftBottom.onPress = function() {
     avatarBottom = bottomLeft
   };
 }
@@ -362,6 +371,13 @@ function draw() {
       break;
     case 'level 1':
       gameScreen();
+      cursor(cursorImg, mouseX, mouseY);
+      text(input.value(), 160, 85);
+      text(input2.value(), 460, 85);
+      text(input3.value(), 700, 82);
+      text(input4.value(), 940, 82);
+      text(input5.value(), 1240, 82);
+
       //cnv.mouseClicked(level1MouseClicked);
 
       break;
@@ -420,24 +436,24 @@ function endMouseClicked() {
 }
 
 //function mouseClicked() {
-  //if (mouseX > 400) {
-    //c = get(mouseX, mouseY);
-    //checkbox.checked(false);
-  //} else {
-    //stampRectangle(c);
-  //}
+//if (mouseX > 400) {
+//c = get(mouseX, mouseY);
+//checkbox.checked(false);
+//} else {
+//stampRectangle(c);
+//}
 //}
 
 //function mouseDragged() {
-  //if (checkbox.checked()) {
-    //stroke(255);
-  //} else {
-    //stroke(c)
-  //}
-  //if (mouseX < 390) {
-    //strokeWeight(slider.value());
-    //line(mouseX, mouseY, pmouseX, pmouseY);
-  //}
+//if (checkbox.checked()) {
+//stroke(255);
+//} else {
+//stroke(c)
+//}
+//if (mouseX < 390) {
+//strokeWeight(slider.value());
+//line(mouseX, mouseY, pmouseX, pmouseY);
+//}
 //}
 
 function changeBG() {
@@ -446,61 +462,61 @@ function changeBG() {
 }
 
 //function createColorPicker() {
-  //colorPicker = createImage(100, height);
-  //var myWidth = colorPicker.width / 3
-  //colorPicker.loadPixels()
-  //from = color(0, 255, 0);
-  //to = color(255, 0, 0);
-  //console.log(hue(from))
-  //for (var y = 0; y < height; y++) {
-    //for (x = 0; x < myWidth; x++) {
-      //color1 = lerpColor(from, to, y / height)
-      //colorPicker.set(x, y, color1)
-    //}
-  //}
-  //from = color(0, 0, 255);
-  //to = color(0, 255, 0);
-  //console.log(hue(from))
-  //for (var y = 0; y < height; y++) {
-    //for (x = myWidth; x < myWidth * 2; x++) {
-      //color1 = lerpColor(from, to, y / height)
-      //colorPicker.set(x, y, color1)
-    //}
-  //}
-  //from = color(255, 0, 0);
-  //to = color(0, 255, 255);
-  //console.log(hue(from))
-  //for (var y = 0; y < height; y++) {
-    //for (x = myWidth * 2; x < myWidth * 3; x++) {
-      //color1 = lerpColor(from, to, y / height)
-      //colorPicker.set(x, y, color1)
-  //  }
+//colorPicker = createImage(100, height);
+//var myWidth = colorPicker.width / 3
+//colorPicker.loadPixels()
+//from = color(0, 255, 0);
+//to = color(255, 0, 0);
+//console.log(hue(from))
+//for (var y = 0; y < height; y++) {
+//for (x = 0; x < myWidth; x++) {
+//color1 = lerpColor(from, to, y / height)
+//colorPicker.set(x, y, color1)
+//}
+//}
+//from = color(0, 0, 255);
+//to = color(0, 255, 0);
+//console.log(hue(from))
+//for (var y = 0; y < height; y++) {
+//for (x = myWidth; x < myWidth * 2; x++) {
+//color1 = lerpColor(from, to, y / height)
+//colorPicker.set(x, y, color1)
+//}
+//}
+//from = color(255, 0, 0);
+//to = color(0, 255, 255);
+//console.log(hue(from))
+//for (var y = 0; y < height; y++) {
+//for (x = myWidth * 2; x < myWidth * 3; x++) {
+//color1 = lerpColor(from, to, y / height)
+//colorPicker.set(x, y, color1)
 //  }
-  //colorPicker.updatePixels()
-  //image(colorPicker, 400, 0)
+//  }
+//colorPicker.updatePixels()
+//image(colorPicker, 400, 0)
 //}
 
 //function stampRectangle(c) {
-  //fill(c)
-  //noStroke()
-  //rect(mouseX, mouseY, slider.value(), slider.value())
+//fill(c)
+//noStroke()
+//rect(mouseX, mouseY, slider.value(), slider.value())
 //}
 
 //function eraserSwitch() {
-  //
+//
 //}
 
 function gameScreen() {
   background(217, 176, 67);
   //backGroundImage.draw();
-  image(woodbackgroundImg, 8, 10, 1383, 780 );
-  image(ageWeight, 598, 22,780, 100);
-  image(oldPaper,600, 158, 780, 566);
-  image(nameRace,60, 20,500, 100);
-  image(oldPaper,80, 135,440, 560);
-  image(avatarTop, 80, 130,425,425);
-  image(avatarMiddle,80,150,425,425);
-  image(avatarBottom,80,170,425,425);
+  image(woodbackgroundImg, 8, 10, 1383, 780);
+  image(ageWeight, 598, 22, 780, 100);
+  image(oldPaper, 600, 158, 780, 566);
+  image(nameRace, 60, 20, 500, 100);
+  image(oldPaper, 80, 135, 440, 560);
+  image(avatarTop, 80, 130, 425, 425);
+  image(avatarMiddle, 80, 150, 425, 425);
+  image(avatarBottom, 80, 170, 425, 425);
   //image(backGroundT,)
   //image(backGroundT,)
 
