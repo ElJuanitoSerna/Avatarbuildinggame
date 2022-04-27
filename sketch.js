@@ -371,7 +371,7 @@ function draw() {
       break;
     case 'level 1':
       gameScreen();
-      cursor(cursorImg, mouseX, mouseY);
+      //cursor(cursorImg, mouseX, mouseY);
       text(input.value(), 160, 85);
       text(input2.value(), 460, 85);
       text(input3.value(), 700, 82);
