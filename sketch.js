@@ -354,18 +354,8 @@ function setup() {
 
 
 function draw() {
-  //radius = slider.value();
   switch (state) {
     case 'title':
-      function mouseClicked() {
-        if (mouseX > 400) {
-          c = get(mouseX, mouseY);
-          checkbox.checked(false);
-        } else {
-          stampRectangle(c);
-        }
-      }
-
       title();
       cnv.mouseClicked(titleMouseClicked);
       break;
@@ -377,8 +367,6 @@ function draw() {
       text(input3.value(), 700, 82);
       text(input4.value(), 940, 82);
       text(input5.value(), 1240, 82);
-
-      //cnv.mouseClicked(level1MouseClicked);
 
       break;
     case 'end':
@@ -392,18 +380,23 @@ function draw() {
 
 }
 
+
+
+
+
 function title() {
   textSize(40);
   stroke(255);
-
-  //text('AVATAR BUILDING GAME', 100, 100);
+ background (2);
+  //text('CLICK YOUR ADVENTURE AVATAR BUILDING GAME', 400, 100);
   textSize(30);
-  image(fisrtTitleScreen, 200, 200, 1200, 600);
+  image(fisrtTitleScreen, 80, 100, 1240, 600);
 }
 
 function titleMouseClicked() {
   console.log('canvas is clicked on title page');
   state = 'level 1'
+
 }
 
 function level1() {
@@ -422,12 +415,13 @@ function level1MouseClicked() {
 }
 
 function end() {
-  background(255);
-  textSize(40);
-  stroke(255);
-  //text('END', 100, 100);
-  image(titleScreens, 200, 200, 1200, 600);
+  background(2);
 
+image(titleScreens, 80, 100, 1240, 600);
+textSize(60);
+  text('REFRESH TO PLAY AGAIN', 320, 770);
+  stroke(0,64,255);
+  textColor(0,64,255)
 }
 
 function endMouseClicked() {
@@ -517,8 +511,7 @@ function gameScreen() {
   image(avatarTop, 80, 130, 425, 425);
   image(avatarMiddle, 80, 150, 425, 425);
   image(avatarBottom, 80, 170, 425, 425);
-  //image(backGroundT,)
-  //image(backGroundT,)
+
 
   headTopRight.draw();
   leftBottom.draw();
@@ -534,11 +527,5 @@ function gameScreen() {
   //image(backGroundT,200, 200,180,180)
 
 
-  //image()
-  //click1.draw();
-  //avatarBuild.draw();
-  //behindAttributes.draw();
-  //informationBanner.draw();
-  //nameBanner.draw();
 
 }
