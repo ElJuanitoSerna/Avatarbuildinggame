@@ -59,12 +59,13 @@ var backGroundT;
 var avatarTop;
 var avatarMiddle;
 var avatarBottom;
-var cursorImg;
+////var cursorImg;
 var input;
 var input2;
 var input3;
 var input4;
 var input5;
+var backGroundHtml;
 
 
 
@@ -93,12 +94,20 @@ function preload() {
   rightCenter = loadImage("Assets/Humaneyes.png")
   rightTop = loadImage("Assets/humanhead.png")
   screenCap = loadImage("Assets/screengrabcam.png")
-  cursorImg = loadImage("Assets/brushtwo.png")
+  //cursorImg = loadImage("Assets/brushtwo.png")
   backGroundT = loadImage("Assets/backgroundtrans.png")
+  backGroundHtml = loadImage("Assets/backgroundhtml.png")
+  //myFont = loadFont ('Assets/Yatara-One-Regular.ttf');
 }
 
 function setup() {
   cnv = createCanvas(1400, 800);
+
+  //let btn1 = text(input.value(), 160, 85)
+  //btn1.position(x, y)
+
+
+
   input = createInput("  name")
   input2 = createInput("race")
   input3 = createInput(" age")
@@ -388,6 +397,8 @@ function title() {
   textSize(40);
   stroke(255);
  background (2);
+
+
   //text('CLICK YOUR ADVENTURE AVATAR BUILDING GAME', 400, 100);
   textSize(30);
   image(fisrtTitleScreen, 80, 100, 1240, 600);
@@ -419,13 +430,13 @@ function end() {
 
 image(titleScreens, 80, 100, 1240, 600);
 textSize(60);
-  text('REFRESH TO PLAY AGAIN', 320, 770);
+  text('REFRESH TO DESIGN AGAIN', 320, 770);
   stroke(0,64,255);
   textColor(0,64,255)
 }
 
 function endMouseClicked() {
-  state = "end";
+  state = "title";
   console.log('canvas is clicked on end');
 }
 
@@ -455,50 +466,6 @@ function changeBG() {
   //createColorPicker()
 }
 
-//function createColorPicker() {
-//colorPicker = createImage(100, height);
-//var myWidth = colorPicker.width / 3
-//colorPicker.loadPixels()
-//from = color(0, 255, 0);
-//to = color(255, 0, 0);
-//console.log(hue(from))
-//for (var y = 0; y < height; y++) {
-//for (x = 0; x < myWidth; x++) {
-//color1 = lerpColor(from, to, y / height)
-//colorPicker.set(x, y, color1)
-//}
-//}
-//from = color(0, 0, 255);
-//to = color(0, 255, 0);
-//console.log(hue(from))
-//for (var y = 0; y < height; y++) {
-//for (x = myWidth; x < myWidth * 2; x++) {
-//color1 = lerpColor(from, to, y / height)
-//colorPicker.set(x, y, color1)
-//}
-//}
-//from = color(255, 0, 0);
-//to = color(0, 255, 255);
-//console.log(hue(from))
-//for (var y = 0; y < height; y++) {
-//for (x = myWidth * 2; x < myWidth * 3; x++) {
-//color1 = lerpColor(from, to, y / height)
-//colorPicker.set(x, y, color1)
-//  }
-//  }
-//colorPicker.updatePixels()
-//image(colorPicker, 400, 0)
-//}
-
-//function stampRectangle(c) {
-//fill(c)
-//noStroke()
-//rect(mouseX, mouseY, slider.value(), slider.value())
-//}
-
-//function eraserSwitch() {
-//
-//}
 
 function gameScreen() {
   background(217, 176, 67);
