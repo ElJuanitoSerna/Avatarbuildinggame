@@ -50,16 +50,12 @@ var rightBottom;
 var rightCenter;
 var rightTop;
 var screenCap;
-//var radius;
-//var c;
-//var eraser;
-//var changeBG;
-//var checkbox;
+
 var backGroundT;
 var avatarTop;
 var avatarMiddle;
 var avatarBottom;
-////var cursorImg;
+
 var input;
 var input2;
 var input3;
