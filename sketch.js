@@ -66,6 +66,8 @@ var input3;
 var input4;
 var input5;
 var backGroundHtml;
+var instructions;
+
 
 
 
@@ -97,31 +99,22 @@ function preload() {
   //cursorImg = loadImage("Assets/brushtwo.png")
   backGroundT = loadImage("Assets/backgroundtrans.png")
   backGroundHtml = loadImage("Assets/backgroundhtml.png")
+  instructions = loadImage("Assets/characterinstructionspage1.png")
   //myFont = loadFont ('Assets/Yatara-One-Regular.ttf');
 }
 
 function setup() {
-  cnv = createCanvas(1400, 800);
+  cnv = createCanvas(1800, 1200);
 
   //let btn1 = text(input.value(), 160, 85)
   //btn1.position(x, y)
-
-
 
   input = createInput("  name")
   input2 = createInput("race")
   input3 = createInput(" age")
   input4 = createInput(" weight")
   input5 = createInput(" height")
-  //createP();
-  //slider = createSlider(1, 20, 10);
-  //eraser = createButton("clear");
-  //eraser.mousePressed(changeBG);
-  //checkbox = createCheckbox('Erase', false);
-  //c = color(255, 0, 0);
-  //background(545);
-  //colorMode(RGB)
-  //createColorPicker();
+
   avatarTop = backGroundT;
   avatarMiddle = backGroundT;
   avatarBottom = backGroundT;
@@ -153,7 +146,7 @@ function setup() {
     this.x += 200;
   };
 
-  // SCREEN GRAB
+
   screenGrab = new Clickable();
   screenGrab.image = screenCap;
   screenGrab.fitImage = true; // no stretching!
@@ -368,6 +361,13 @@ function draw() {
       title();
       cnv.mouseClicked(titleMouseClicked);
       break;
+
+    case 'instructions':
+      instructions();
+      cnv.mouseClicked(titleMouseClicked);
+      break;
+
+
     case 'level 1':
       gameScreen();
       //cursor(cursorImg, mouseX, mouseY);
@@ -378,6 +378,7 @@ function draw() {
       text(input5.value(), 1240, 82);
 
       break;
+
     case 'end':
       end();
       cnv.mouseClicked(endMouseClicked);
@@ -396,12 +397,28 @@ function draw() {
 function title() {
   textSize(40);
   stroke(255);
- background (2);
+  background(2);
 
 
   //text('CLICK YOUR ADVENTURE AVATAR BUILDING GAME', 400, 100);
   textSize(30);
-  image(fisrtTitleScreen, 80, 100, 1240, 600);
+  image(fisrtTitleScreen, 100, 180, 1600, 800);
+}
+
+function titleMouseClicked() {
+  console.log('canvas is clicked on title page');
+  state = 'level 1'
+
+}
+
+function instructions() {
+  textSize(40);
+  stroke(255);
+  background(2);
+
+
+  textSize(30);
+  image(fisrtTitleScreen, 80, 100, 1240, 400);
 }
 
 function titleMouseClicked() {
@@ -412,9 +429,9 @@ function titleMouseClicked() {
 
 function level1() {
   secondPage.image = secondPage;
-  background(50, 150, 200);
+  background(50, 1000, 1000);
   textSize(30);
-  text('GAME', 100, 100);
+  //text('GAME', 100, 100);
   avatarBuild()
   image(cursorImg, mouseX, mouseY);
 
@@ -428,38 +445,21 @@ function level1MouseClicked() {
 function end() {
   background(2);
 
-image(titleScreens, 80, 100, 1240, 600);
-textSize(60);
+  image(titleScreens, 80, 100, 1240, 600);
+  textSize(60);
   text('REFRESH TO DESIGN AGAIN', 320, 770);
-  stroke(0,64,255);
-  textColor(0,64,255)
-}
+  stroke(0, 64, 255);
+  textColor(0, 64, 255)
+};
+
 
 function endMouseClicked() {
   state = "title";
   console.log('canvas is clicked on end');
 }
 
-//function mouseClicked() {
-//if (mouseX > 400) {
-//c = get(mouseX, mouseY);
-//checkbox.checked(false);
-//} else {
-//stampRectangle(c);
-//}
-//}
 
-//function mouseDragged() {
-//if (checkbox.checked()) {
-//stroke(255);
-//} else {
-//stroke(c)
-//}
-//if (mouseX < 390) {
-//strokeWeight(slider.value());
-//line(mouseX, mouseY, pmouseX, pmouseY);
-//}
-//}
+
 
 function changeBG() {
   background(255);
@@ -470,11 +470,12 @@ function changeBG() {
 function gameScreen() {
   background(217, 176, 67);
   //backGroundImage.draw();
-  image(woodbackgroundImg, 8, 10, 1383, 780);
+  image(woodbackgroundImg, 8, 10, 1780, 1180);
   image(ageWeight, 598, 22, 780, 100);
   image(oldPaper, 600, 158, 780, 566);
   image(nameRace, 60, 20, 500, 100);
   image(oldPaper, 80, 135, 440, 560);
+  //avatarparts
   image(avatarTop, 80, 130, 425, 425);
   image(avatarMiddle, 80, 150, 425, 425);
   image(avatarBottom, 80, 170, 425, 425);
@@ -492,7 +493,5 @@ function gameScreen() {
   centerMiddleFace.draw();
   headMiddle.draw();
   //image(backGroundT,200, 200,180,180)
-
-
 
 }
