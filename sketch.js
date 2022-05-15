@@ -1,11 +1,5 @@
 'use strict'
-
-
-
 let state = 'title';
-//let state = 'gameScreen';
-//let state = 'end';
-
 let cnv;
 let firstPage;
 let secondPage;
@@ -50,12 +44,10 @@ var rightBottom;
 var rightCenter;
 var rightTop;
 var screenCap;
-
 var backGroundT;
 var avatarTop;
 var avatarMiddle;
 var avatarBottom;
-
 var input;
 var input2;
 var input3;
@@ -63,14 +55,14 @@ var input4;
 var input5;
 var backGroundHtml;
 var instructions;
-
-
-
+var clickadventureintropage;
+var dwarfTop;
+var dwarfTopEyes;
+var dwarfMouth;
 
 function preload() {
   firstPage = loadImage('firstg1.png');
   secondPage = loadImage('game.JPG');
-  //clickImg = loadImage("Mustache practice.png");
   woodbackgroundImg = loadImage("woodbackground.png");
   oldPaper = loadImage("oldpaper.jpeg");
   animatedBackdrop = loadImage("Animatedbackdrop.png");
@@ -92,34 +84,29 @@ function preload() {
   rightCenter = loadImage("Assets/Humaneyes.png")
   rightTop = loadImage("Assets/humanhead.png")
   screenCap = loadImage("Assets/screengrabcam.png")
-  //cursorImg = loadImage("Assets/brushtwo.png")
   backGroundT = loadImage("Assets/backgroundtrans.png")
   backGroundHtml = loadImage("Assets/backgroundhtml.png")
   instructions = loadImage("Assets/characterinstructionspage1.png")
-  //myFont = loadFont ('Assets/Yatara-One-Regular.ttf');
+  //clickadventureintropage = loadImage("Assets/clickadventureintropage.png")
+
+
+  dwarfTop = loadImage("Assets/Dwarfhead.png")
+  dwarfTopEyes = loadImage("Assets/Dwarfeyes.png")
+  dwarfMouth = loagImage("Assets/Dwarfmouth.png")
 }
 
 function setup() {
   cnv = createCanvas(1800, 1200);
-
-  //let btn1 = text(input.value(), 160, 85)
-  //btn1.position(x, y)
-
   input = createInput("  name")
   input2 = createInput("race")
   input3 = createInput(" age")
   input4 = createInput(" weight")
   input5 = createInput(" height")
-
   avatarTop = backGroundT;
   avatarMiddle = backGroundT;
   avatarBottom = backGroundT;
-
-
-  //image (firstPage,0,0);//cnv.mouseClicked(canvasClicked);//Create, style and resize clickables.
   click1 = new Clickable();
   click1.locate(20, 20);
-
   click1.onHover = function() {
     this.color = "#4396D9 ";
     this.textColor = "#FFFFFF";
@@ -131,24 +118,18 @@ function setup() {
     this.text = "Name Species";
     this.textColor = "#000000";
   };
-  //This function is ran when the clickable is pressed.
   click1.onPress = function() {
     this.stroke = "#FF0000";
   };
-  //This funcion is ran when the cursor was pressed and then
-  //rleased inside the clickable. If it was pressed inside and
-  //then released outside this won't work.
   click1.onRelease = function() {
     this.x += 200;
   };
-
-
   screenGrab = new Clickable();
   screenGrab.image = screenCap;
-  screenGrab.fitImage = true; // no stretching!
+  screenGrab.fitImage = true;
   screenGrab.imageScale = 1;
   screenGrab.text = "";
-  screenGrab.locate(240, 714);
+  screenGrab.locate(240, 980);
   screenGrab.resize(120, 72);
   screenGrab.onHover = function() {
     screenGrab.imageScale = 1.1;
@@ -193,6 +174,25 @@ function setup() {
   headTopRight.onPress = function() {
     avatarTop = rightTop;
   }
+  //top Right Head
+  //headTopRight = new Clickable();
+  //headTopRight.image = rightTop;
+  //headTopRight.locate(1400, 200);
+  //headTopRight.resize(180, 140);
+  //headTopRight.text = "";
+  //headTopRight.onHover = function() {
+    //this.color = "#D1A56A ";
+    //this.noTint = false;
+    //his.tint = "#FF0000";
+  //};
+  //headTopRight.onOutside = function() {
+    //this.color = "#FFFFFF";
+    //this.noTint = true;
+  //};
+  //headTopRight.onPress = function() {
+    //avatarTop = rightTop;
+  //}
+
   // middle right
   rightMiddleFace = new Clickable();
   rightMiddleFace.image = rightCenter;
@@ -237,13 +237,6 @@ function setup() {
   bottomMiddleFace.locate(890, 550);
   bottomMiddleFace.resize(180, 140);
   bottomMiddleFace.text = "";
-  //bottomMiddleFace.onHover = function() {
-  //this.color = "#4CBB17  ";
-  //this.noTint = false;
-  //this.tint = "#FF0000";
-  //};
-  //bottomMiddleFace.onPress = function(){
-
   bottomMiddleFace.onOutside = function() {
     this.color = "#FFFFFF";
     this.noTint = true;
@@ -270,10 +263,10 @@ function setup() {
     avatarMiddle = centerMiddle;
   }
 
-  //Head middle
+
   headMiddle = new Clickable();
   headMiddle.image = centerTop;
-  //headMiddle.cornerRadius = 10;
+
   headMiddle.locate(888, 200);
   headMiddle.resize(180, 140);
   headMiddle.text = "";
@@ -366,7 +359,7 @@ function draw() {
 
     case 'level 1':
       gameScreen();
-      //cursor(cursorImg, mouseX, mouseY);
+      //CHANGE AREA FOR INFO
       text(input.value(), 160, 85);
       text(input2.value(), 460, 85);
       text(input3.value(), 700, 82);
@@ -386,15 +379,10 @@ function draw() {
 
 }
 
-
-
-
-
 function title() {
   textSize(40);
   stroke(255);
   background(2);
-
 
   //text('CLICK YOUR ADVENTURE AVATAR BUILDING GAME', 400, 100);
   textSize(30);
@@ -468,13 +456,13 @@ function gameScreen() {
   //backGroundImage.draw();
   image(woodbackgroundImg, 8, 10, 1780, 1180);
   image(ageWeight, 598, 22, 780, 100);
-  image(oldPaper, 600, 158, 780, 566);
+  image(oldPaper, 600, 158, 1000, 800);
   image(nameRace, 60, 20, 500, 100);
-  image(oldPaper, 80, 135, 440, 560);
+  image(oldPaper, 80, 280, 420, 580);
   //avatarparts
-  image(avatarTop, 80, 130, 425, 425);
-  image(avatarMiddle, 80, 150, 425, 425);
-  image(avatarBottom, 80, 170, 425, 425);
+  image(avatarTop, 80, 280, 425, 425);
+  image(avatarMiddle, 80, 300, 425, 425);
+  image(avatarBottom, 80, 320, 425, 425);
 
 
   headTopRight.draw();
@@ -488,6 +476,8 @@ function gameScreen() {
   headLeft.draw();
   centerMiddleFace.draw();
   headMiddle.draw();
+
+  //ADDNEW  CHARACTER
   //image(backGroundT,200, 200,180,180)
 
 }
