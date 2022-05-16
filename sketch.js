@@ -48,6 +48,12 @@ var backGroundT;
 var avatarTop;
 var avatarMiddle;
 var avatarBottom;
+var secondTopRight;
+var secondTopRightImg;
+var dwarfEyes;
+var dwarfEyesImg;
+var dwarfMouth;
+var dwarfMouthImg;
 var input;
 var input2;
 var input3;
@@ -56,9 +62,7 @@ var input5;
 var backGroundHtml;
 var instructions;
 var clickadventureintropage;
-var dwarfTop;
-var dwarfTopEyes;
-var dwarfMouth;
+
 
 function preload() {
   firstPage = loadImage('firstg1.png');
@@ -87,12 +91,13 @@ function preload() {
   backGroundT = loadImage("Assets/backgroundtrans.png")
   backGroundHtml = loadImage("Assets/backgroundhtml.png")
   instructions = loadImage("Assets/characterinstructionspage1.png")
+
+  secondTopRightImg = loadImage("Assets/dwarfhead.png")
+  dwarfEyesImg = loadImage("Assets/Dwarfeyes.png")
+  dwarfMouthImg = loadImage("Assets/Dwarfmouth.png")
   //clickadventureintropage = loadImage("Assets/clickadventureintropage.png")
 
 
-  dwarfTop = loadImage("Assets/Dwarfhead.png")
-  dwarfTopEyes = loadImage("Assets/Dwarfeyes.png")
-  dwarfMouth = loagImage("Assets/Dwarfmouth.png")
 }
 
 function setup() {
@@ -105,6 +110,8 @@ function setup() {
   avatarTop = backGroundT;
   avatarMiddle = backGroundT;
   avatarBottom = backGroundT;
+
+
   click1 = new Clickable();
   click1.locate(20, 20);
   click1.onHover = function() {
@@ -174,25 +181,64 @@ function setup() {
   headTopRight.onPress = function() {
     avatarTop = rightTop;
   }
-  //top Right Head
-  //headTopRight = new Clickable();
-  //headTopRight.image = rightTop;
-  //headTopRight.locate(1400, 200);
-  //headTopRight.resize(180, 140);
-  //headTopRight.text = "";
-  //headTopRight.onHover = function() {
-    //this.color = "#D1A56A ";
-    //this.noTint = false;
-    //his.tint = "#FF0000";
-  //};
-  //headTopRight.onOutside = function() {
-    //this.color = "#FFFFFF";
-    //this.noTint = true;
-  //};
-  //headTopRight.onPress = function() {
-    //avatarTop = rightTop;
-  //}
 
+  //top dwarf head
+  secondTopRight = new Clickable();
+  secondTopRight.image = secondTopRightImg;
+  secondTopRight.locate(1380, 200);
+  secondTopRight.resize(180, 140);
+  secondTopRight.text = "";
+  secondTopRight.onHover = function() {
+    this.color = "#D1A56A ";
+    this.noTint = false;
+    this.tint = "#FF0000";
+  };
+  secondTopRight.onOutside = function() {
+    this.color = "#FFFFFF";
+    this.noTint = true;
+  };
+  secondTopRight.onPress = function() {
+    avatarTop = secondTopRightImg;
+  }
+  // middle dwarf
+  dwarfEyes = new Clickable();
+  dwarfEyes.image = dwarfEyesImg;
+  dwarfEyes.locate(1380, 380);
+  dwarfEyes.resize(180, 140);
+  dwarfEyes.text = "";
+  dwarfEyes.onHover = function() {
+    this.color = "#D1A56A ";
+    this.noTint = false;
+    this.tint = "#FF0000";
+  };
+  dwarfEyes.onOutside = function() {
+    this.color = "#FFFFFF";
+    this.noTint = true;
+  };
+  dwarfEyes.onPress = function() {
+    avatarMiddle = dwarfEyesImg;
+  }
+  //dwarf Mouth
+  //bottom right
+  dwarfMouth = new Clickable();
+  dwarfMouth.image = dwarfMouthImg;
+  dwarfMouth.cornerRadius = 10;
+  dwarfMouth.locate(1380, 550);
+  dwarfMouth.resize(180, 140);
+  dwarfMouth.text = "";
+  dwarfMouth.onHover = function() {
+    this.color = "#D1A56A ";
+    this.noTint = false;
+    this.tint = "#FF0000";
+  };
+
+  dwarfMouth.onOutside = function() {
+    this.color = "#FFFFFF";
+    this.noTint = true;
+  };
+  dwarfMouth.onPress = function() {
+    avatarBottom = dwarfMouthImg;
+  }
   // middle right
   rightMiddleFace = new Clickable();
   rightMiddleFace.image = rightCenter;
@@ -341,6 +387,26 @@ function setup() {
   leftBottom.onPress = function() {
     avatarBottom = bottomLeft
   };
+  //left middle
+  leftBottom = new Clickable();
+  //headLeft.cornerRadius = 10;
+  leftBottom.image = bottomLeft;
+  leftBottom.locate(640, 550);
+  leftBottom.resize(180, 140);
+  leftBottom.text = "";
+  leftMiddle.onHover = function() {
+    this.color = "#D1A56A ";
+    this.noTint = false;
+    this.tint = "#FF0000";
+  };
+  leftBottom.onOutside = function() {
+    this.color = "#FFFFFF";
+    this.noTint = true;
+  };
+
+  leftBottom.onPress = function() {
+    avatarBottom = bottomLeft
+  };
 }
 
 
@@ -355,7 +421,6 @@ function draw() {
       instructions();
       cnv.mouseClicked(titleMouseClicked);
       break;
-
 
     case 'level 1':
       gameScreen();
@@ -476,6 +541,11 @@ function gameScreen() {
   headLeft.draw();
   centerMiddleFace.draw();
   headMiddle.draw();
+  secondTopRight.draw();
+  dwarfEyes.draw();
+  dwarfMouth.draw();
+
+
 
   //ADDNEW  CHARACTER
   //image(backGroundT,200, 200,180,180)
