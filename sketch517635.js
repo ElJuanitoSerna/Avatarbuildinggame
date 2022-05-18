@@ -418,10 +418,10 @@ function draw() {
 
     case 'instructions':
       instructions();
-      cnv.mouseClicked(instructionsMouseClicked);
+      cnv.mouseClicked(titleMouseClicked);
       break;
 
-    case 'gameScreen':
+    case 'level 1':
       gameScreen();
       //CHANGE AREA FOR INFO
       text(input.value(), 160, 85);
@@ -434,21 +434,6 @@ function draw() {
 
     case 'end':
       end();
-      cnv.mouseClicked(endMouseClicked);
-      break;
-
-    case 'clickNextPageIntro':
-      clickNextPageIntro();
-      cnv.mouseClicked(endMouseClicked);
-      break;
-
-      //case 'clickgame':
-      //clickgame();
-      //cnv.mouseClicked(endMouseClicked);
-      //break;
-
-    case 'closingPage':
-      closingPage();
       cnv.mouseClicked(endMouseClicked);
       break;
     default:
@@ -470,22 +455,27 @@ function title() {
 
 function titleMouseClicked() {
   console.log('canvas is clicked on title page');
-  state = 'instructions'
+  state = 'level 1'
 
 }
 
 function instructions() {
-  image(instructionsImg, 100, 180, 1600, 800);
+  textSize(40);
+  stroke(255);
+  background(2);
+
+
+  textSize(30);
+  image(fisrtTitleScreen, 80, 100, 1240, 400);
+}
+
+function titleMouseClicked() {
+  console.log('canvas is clicked on title page');
+  state = 'level 1'
 
 }
 
-function instructionsMouseClicked() {
-  console.log('canvas is clicked on instructions');
-  state = 'gameScreen'
-
-}
-
-function gameScreen() {
+function level1() {
   secondPage.image = secondPage;
   background(50, 1000, 1000);
   textSize(30);
@@ -495,7 +485,7 @@ function gameScreen() {
 
 }
 
-function gameScreenMouseClicked() {
+function level1MouseClicked() {
   console.log('canvas is clicked on level 1');
   state = 'title'
 }
@@ -516,9 +506,7 @@ function endMouseClicked() {
   console.log('canvas is clicked on end');
 }
 
-function clickNextPageIntro() {
-  image(clickNextPageImg, 80, 100, 1240, 600);
-}
+
 
 
 function changeBG() {

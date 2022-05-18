@@ -1,5 +1,5 @@
 'use strict'
-let state = 'title';
+let currentState = '0';
 let cnv;
 let firstPage;
 let secondPage;
@@ -60,12 +60,9 @@ var input3;
 var input4;
 var input5;
 var backGroundHtml;
-var clickNextPageIntro;
-var clickNextPageImg;
 var instructions;
-var instructionsImg;
-var closingPage;
-var closingPageImg;
+var clickadventureintropage;
+
 
 function preload() {
   firstPage = loadImage('firstg1.png');
@@ -93,12 +90,13 @@ function preload() {
   screenCap = loadImage("Assets/screengrabcam.png")
   backGroundT = loadImage("Assets/backgroundtrans.png")
   backGroundHtml = loadImage("Assets/backgroundhtml.png")
-  instructionsImg = loadImage("Assets/1instructionspage.png")
-  clickNextPageImg = loadImage("Assets/clickadventureintro.png")
+  instructions = loadImage("Assets/characterinstructionspage1.png")
+
   secondTopRightImg = loadImage("Assets/dwarfhead.png")
   dwarfEyesImg = loadImage("Assets/Dwarfeyes.png")
   dwarfMouthImg = loadImage("Assets/Dwarfmouth.png")
-  closingPageImg = loadImage("Assets/closinggame.png")
+  //clickadventureintropage = loadImage("Assets/clickadventureintropage.png")
+
 
 }
 
@@ -112,6 +110,7 @@ function setup() {
   avatarTop = backGroundT;
   avatarMiddle = backGroundT;
   avatarBottom = backGroundT;
+
 
   click1 = new Clickable();
   click1.locate(20, 20);
@@ -278,6 +277,7 @@ function setup() {
   bottomRightFace.onPress = function() {
     avatarBottom = rightBottom;
   }
+  //bottom middle
   bottomMiddleFace = new Clickable();
   bottomMiddleFace.image = centerBottom;
   bottomMiddleFace.locate(890, 550);
@@ -290,6 +290,7 @@ function setup() {
   bottomMiddleFace.onPress = function() {
     avatarBottom = centerBottom;
   }
+  //middle center
   centerMiddleFace = new Clickable();
   centerMiddleFace.image = centerMiddle;
   centerMiddleFace.locate(888, 380);
@@ -410,18 +411,19 @@ function setup() {
 
 
 function draw() {
-  switch (state) {
-    case 'title':
+  switch (currentState) {
+    case '0':
+    if( currentState == 0){
       title();
-      cnv.mouseClicked(titleMouseClicked);
+    };
       break;
 
     case 'instructions':
       instructions();
-      cnv.mouseClicked(instructionsMouseClicked);
+      cnv.mouseClicked(titleMouseClicked);
       break;
 
-    case 'gameScreen':
+    case 'level 1':
       gameScreen();
       //CHANGE AREA FOR INFO
       text(input.value(), 160, 85);
@@ -436,27 +438,14 @@ function draw() {
       end();
       cnv.mouseClicked(endMouseClicked);
       break;
-
-    case 'clickNextPageIntro':
-      clickNextPageIntro();
-      cnv.mouseClicked(endMouseClicked);
-      break;
-
-      //case 'clickgame':
-      //clickgame();
-      //cnv.mouseClicked(endMouseClicked);
-      //break;
-
-    case 'closingPage':
-      closingPage();
-      cnv.mouseClicked(endMouseClicked);
-      break;
     default:
       break;
   }
 
 
 }
+
+
 
 function title() {
   textSize(40);
@@ -470,22 +459,27 @@ function title() {
 
 function titleMouseClicked() {
   console.log('canvas is clicked on title page');
-  state = 'instructions'
+  state = 'level 1'
 
 }
 
 function instructions() {
-  image(instructionsImg, 100, 180, 1600, 800);
+  textSize(40);
+  stroke(255);
+  background(2);
+
+
+  textSize(30);
+  image(fisrtTitleScreen, 80, 100, 1240, 400);
+}
+
+function titleMouseClicked() {
+  console.log('canvas is clicked on title page');
+  state = 'level 1'
 
 }
 
-function instructionsMouseClicked() {
-  console.log('canvas is clicked on instructions');
-  state = 'gameScreen'
-
-}
-
-function gameScreen() {
+function level1() {
   secondPage.image = secondPage;
   background(50, 1000, 1000);
   textSize(30);
@@ -495,7 +489,7 @@ function gameScreen() {
 
 }
 
-function gameScreenMouseClicked() {
+function level1MouseClicked() {
   console.log('canvas is clicked on level 1');
   state = 'title'
 }
@@ -516,9 +510,7 @@ function endMouseClicked() {
   console.log('canvas is clicked on end');
 }
 
-function clickNextPageIntro() {
-  image(clickNextPageImg, 80, 100, 1240, 600);
-}
+
 
 
 function changeBG() {
