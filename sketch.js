@@ -60,12 +60,17 @@ var input3;
 var input4;
 var input5;
 var backGroundHtml;
-var clickNextPageIntro;
+var nextPage;
 var clickNextPageImg;
 var instructions;
 var instructionsImg;
 var closingPage;
 var closingPageImg;
+var clickAdventureIntroPage;
+var clickAdventureIntroPageImg;
+
+
+
 
 function preload() {
   firstPage = loadImage('firstg1.png');
@@ -99,6 +104,7 @@ function preload() {
   dwarfEyesImg = loadImage("Assets/Dwarfeyes.png")
   dwarfMouthImg = loadImage("Assets/Dwarfmouth.png")
   closingPageImg = loadImage("Assets/closinggame.png")
+  clickAdventureIntroPageImg = ("Assets/clickadventureintropage.png")
 
 }
 
@@ -145,7 +151,7 @@ function setup() {
   };
   screenGrab.onPress = function() {
     saveCanvas();
-    state = "end";
+    state = "avatarEnd";
   };
 
   screenGrab.onOutside = function() {
@@ -432,16 +438,20 @@ function draw() {
 
       break;
 
-    case 'end':
-      end();
-      cnv.mouseClicked(endMouseClicked);
+    case 'avatarEnd':
+      avatarEnd();
+      cnv.mouseClicked(avatarEndMouseClicked);
       break;
 
-    case 'clickNextPageIntro':
-      clickNextPageIntro();
-      cnv.mouseClicked(endMouseClicked);
+    case 'nextPage':
+      nextPage();
+      cnv.mouseClicked(nextPageMouseClicked);
       break;
 
+    case 'clickAdventureIntroPage':
+    clickAdventureIntroPage();
+    cnv.mouseClicked(clickAdventureIntroPageMouseClicked);
+    break;
       //case 'clickgame':
       //clickgame();
       //cnv.mouseClicked(endMouseClicked);
@@ -453,7 +463,7 @@ function draw() {
       break;
     default:
       break;
-  }
+  };
 
 
 }
@@ -500,31 +510,33 @@ function gameScreenMouseClicked() {
   state = 'title'
 }
 
-function end() {
+function avatarEnd() {
   background(2);
 
-  image(titleScreens, 80, 100, 1240, 600);
-  textSize(60);
-  text('REFRESH TO DESIGN AGAIN', 320, 770);
-  stroke(0, 64, 255);
-  textColor(0, 64, 255)
+  image(clickNextPageImg, 80, 100, 1240, 600);
+  //textSize(20);
+  //text('REFRESH TO DESIGN A NEW CHARACTER, ClICK SCREEN FOR NEXT ADVENTURE', 320, 770);
+  //stroke(0, 64, 255);
+  //textColor(255, 255, 255)
 };
 
+function avatarEndMouseClicked() {
+  //next state
+  console.log('canvas is clicked on avatarEnd');
+  state = "clickNextPage";
 
-function endMouseClicked() {
-  state = "title";
-  console.log('canvas is clicked on end');
 }
 
-function clickNextPageIntro() {
-  image(clickNextPageImg, 80, 100, 1240, 600);
+function nextPage() {
+  image(extPageImg, 80, 100, 1240, 600);
 }
 
 
-function changeBG() {
-  background(255);
-  //createColorPicker()
+function clickAdventureIntroPage() {
+  image(clickAdventureIntroPageImg, 80, 100, 1240, 600)
 }
+
+
 
 
 function gameScreen() {
