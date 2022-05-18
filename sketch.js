@@ -60,7 +60,7 @@ var input3;
 var input4;
 var input5;
 var backGroundHtml;
-var nextPage;
+var clickNextPage;
 var clickNextPageImg;
 var instructions;
 var instructionsImg;
@@ -459,7 +459,7 @@ function draw() {
 
     case 'closingPage':
       closingPage();
-      cnv.mouseClicked(endMouseClicked);
+      cnv.mouseClicked(closingPageMouseClicked);
       break;
     default:
       break;
@@ -527,8 +527,8 @@ function avatarEndMouseClicked() {
 
 }
 
-function nextPage() {
-  image(extPageImg, 80, 100, 1240, 600);
+function clickNextPage() {
+  image(clickNextPageImg, 80, 100, 1240, 600);
 }
 
 
