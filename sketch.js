@@ -220,8 +220,8 @@ function setup() {
   //top Right Head
   headTopRight = new Clickable();
   headTopRight.image = rightTop;
-  headTopRight.locate(1140, 200);
-  headTopRight.resize(180, 140);
+  headTopRight.locate(1200, 180);
+  headTopRight.resize(250, 250);
   headTopRight.text = "";
   headTopRight.onHover = function() {
     this.color = "#D1A56A ";
@@ -239,8 +239,8 @@ function setup() {
   //top dwarf head
   secondTopRight = new Clickable();
   secondTopRight.image = secondTopRightImg;
-  secondTopRight.locate(1380, 200);
-  secondTopRight.resize(180, 140);
+  secondTopRight.locate(1460, 180);
+  secondTopRight.resize(250, 250);
   secondTopRight.text = "";
   secondTopRight.onHover = function() {
     this.color = "#D1A56A ";
@@ -257,8 +257,8 @@ function setup() {
   // middle dwarf
   dwarfEyes = new Clickable();
   dwarfEyes.image = dwarfEyesImg;
-  dwarfEyes.locate(1380, 380);
-  dwarfEyes.resize(180, 140);
+  dwarfEyes.locate(1460, 440);
+  dwarfEyes.resize(250, 250);
   dwarfEyes.text = "";
   dwarfEyes.onHover = function() {
     this.color = "#D1A56A ";
@@ -277,8 +277,8 @@ function setup() {
   dwarfMouth = new Clickable();
   dwarfMouth.image = dwarfMouthImg;
   dwarfMouth.cornerRadius = 10;
-  dwarfMouth.locate(1380, 550);
-  dwarfMouth.resize(180, 140);
+  dwarfMouth.locate(1460, 700);
+  dwarfMouth.resize(250, 250);
   dwarfMouth.text = "";
   dwarfMouth.onHover = function() {
     this.color = "#D1A56A ";
@@ -296,8 +296,8 @@ function setup() {
   // middle right
   rightMiddleFace = new Clickable();
   rightMiddleFace.image = rightCenter;
-  rightMiddleFace.locate(1140, 380);
-  rightMiddleFace.resize(180, 140);
+  rightMiddleFace.locate(1200, 440);
+  rightMiddleFace.resize(250, 250);
   rightMiddleFace.text = "";
   rightMiddleFace.onHover = function() {
     this.color = "#D1A56A ";
@@ -315,8 +315,8 @@ function setup() {
   bottomRightFace = new Clickable();
   bottomRightFace.image = rightBottom;
   bottomRightFace.cornerRadius = 10;
-  bottomRightFace.locate(1140, 550);
-  bottomRightFace.resize(180, 140);
+  bottomRightFace.locate(1200, 700);
+  bottomRightFace.resize(250, 250);
   bottomRightFace.text = "";
   bottomRightFace.onHover = function() {
     this.color = "#D1A56A ";
@@ -333,8 +333,8 @@ function setup() {
   }
   bottomMiddleFace = new Clickable();
   bottomMiddleFace.image = centerBottom;
-  bottomMiddleFace.locate(890, 550);
-  bottomMiddleFace.resize(180, 140);
+  bottomMiddleFace.locate(940, 700);
+  bottomMiddleFace.resize(250, 250);
   bottomMiddleFace.text = "";
   bottomMiddleFace.onOutside = function() {
     this.color = "#FFFFFF";
@@ -345,8 +345,8 @@ function setup() {
   }
   centerMiddleFace = new Clickable();
   centerMiddleFace.image = centerMiddle;
-  centerMiddleFace.locate(888, 380);
-  centerMiddleFace.resize(180, 140);
+  centerMiddleFace.locate(940, 440);
+  centerMiddleFace.resize(250, 250);
   centerMiddleFace.text = "";
   centerMiddleFace.onHover = function() {
     this.color = "#4CBB17 ";
@@ -365,8 +365,8 @@ function setup() {
   headMiddle = new Clickable();
   headMiddle.image = centerTop;
 
-  headMiddle.locate(888, 200);
-  headMiddle.resize(180, 140);
+  headMiddle.locate(940, 180);
+  headMiddle.resize(250, 250);
   headMiddle.text = "";
   headMiddle.onHover = function() {
     this.color = "#4CBB17 ";
@@ -385,8 +385,8 @@ function setup() {
   headLeft = new Clickable();
   //headLeft.cornerRadius = 10;
   headLeft.image = elfHair;
-  headLeft.locate(640, 200);
-  headLeft.resize(180, 140);
+  headLeft.locate(675, 180);
+  headLeft.resize(250, 250);
   headLeft.text = "";
   headLeft.onHover = function() {
     this.color = "#D1A56A ";
@@ -404,8 +404,8 @@ function setup() {
   leftMiddle = new Clickable();
   //headLeft.cornerRadius = 10;
   leftMiddle.image = eyePractice;
-  leftMiddle.locate(640, 380);
-  leftMiddle.resize(180, 140);
+  leftMiddle.locate(675, 440);
+  leftMiddle.resize(250, 250);
   leftMiddle.text = "";
   leftMiddle.onHover = function() {
     this.color = "#D1A56A ";
@@ -423,8 +423,8 @@ function setup() {
   leftBottom = new Clickable();
   //headLeft.cornerRadius = 10;
   leftBottom.image = bottomLeft;
-  leftBottom.locate(640, 550);
-  leftBottom.resize(180, 140);
+  leftBottom.locate(675, 440);
+  leftBottom.resize(250, 250);
   leftBottom.text = "";
   leftMiddle.onHover = function() {
     this.color = "#D1A56A ";
@@ -443,8 +443,8 @@ function setup() {
   leftBottom = new Clickable();
   //headLeft.cornerRadius = 10;
   leftBottom.image = bottomLeft;
-  leftBottom.locate(640, 550);
-  leftBottom.resize(180, 140);
+  leftBottom.locate(675, 700);
+  leftBottom.resize(250, 250);
   leftBottom.text = "";
   leftMiddle.onHover = function() {
     this.color = "#D1A56A ";
@@ -593,9 +593,10 @@ function gameScreen() {
   background(217, 176, 67);
   //backGroundImage.draw();
   image(woodbackgroundImg, 8, 10, 1780, 1180);
-  image(ageWeight, 598, 22, 780, 100);
-  image(oldPaper, 600, 158, 1000, 800);
+  image(ageWeight, 598, 22, 1000, 100);
   image(nameRace, 60, 20, 500, 100);
+  image(oldPaper, 600, 158, 1170, 820);
+
   image(oldPaper, 80, 280, 420, 580);
   //avatarparts
   image(avatarTop, 80, 280, 425, 425);
