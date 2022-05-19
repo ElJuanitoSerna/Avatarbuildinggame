@@ -1,6 +1,30 @@
 'use strict'
+
+
+let roll = ['You'];
+
+let action = ['grab a', 'throw a', 'jump over a', 'run into a', 'pick up a', 'conjure a', 'walk away from a', 'duck a', 'use a', 'swing a'];
+
+let weapon = ['axe', 'potion bottle', 'long sword', 'warhammer', 'drink of elixir', 'crossbow', 'morning star', ' short sword', 'gaunlet', 'helmet'];
+
+let actiont = [',  and throw it at', ', and run into', ', and hide from', ', attack', ', cast a spell at', ',and vanquish ', ',it misses ', ', it is blocked by']
+
+
+let creature = ['a troll', 'a gargoyle', 'a serpant', 'a witch', 'a dark elf', 'a sorcerer', 'a fairy', 'a cave gnome', 'a barbarian', 'a fighter', 'a paladin', 'a ranger'];
+
 let state = 'title';
 let cnv;
+let dr;
+let ac;
+let wp;
+let aet;
+let cr;
+let myFont;
+let wrds;
+let button;
+let addMoreButton;
+let centerPicture;
+let cnv2;
 let firstPage;
 let secondPage;
 var canvas;
@@ -39,7 +63,7 @@ var fisrtTitleScreen;
 var titleScreens;
 var nameRace;
 var ageWeight;
-var clickNext;
+//var clickNext;
 var rightBottom;
 var rightCenter;
 var rightTop;
@@ -60,16 +84,15 @@ var input3;
 var input4;
 var input5;
 var backGroundHtml;
-var clickNextPage;
-var clickNextPageImg;
 var instructions;
 var instructionsImg;
-var closingPage;
-var closingPageImg;
+var clickNextPage;
+var clickNextPageImg;
 var clickAdventureIntroPage;
 var clickAdventureIntroPageImg;
-
-
+var closingPage;
+var closingPageImg;
+var avatarEnd;
 
 
 function preload() {
@@ -91,7 +114,7 @@ function preload() {
   titleScreens = loadImage("endScreenGraphic.png")
   nameRace = loadImage("Assets/nameraceb.png")
   ageWeight = loadImage("Assets/ageweightheightbanner.png")
-  clickNext = loadImage("Assets/clicknextbanners.png")
+  //clickNext = loadImage("Assets/clicknextbanners.png")
   rightBottom = loadImage("Assets/Humanmouth.png")
   rightCenter = loadImage("Assets/Humaneyes.png")
   rightTop = loadImage("Assets/humanhead.png")
@@ -99,11 +122,12 @@ function preload() {
   backGroundT = loadImage("Assets/backgroundtrans.png")
   backGroundHtml = loadImage("Assets/backgroundhtml.png")
   instructionsImg = loadImage("Assets/1instructionspage.png")
-  clickNextPageImg = loadImage("Assets/clickadventureintro.png")
+  //myFont = loadFont('Assets/Yatra_One/YatraOne-Regular.ttf');
   secondTopRightImg = loadImage("Assets/dwarfhead.png")
   dwarfEyesImg = loadImage("Assets/Dwarfeyes.png")
   dwarfMouthImg = loadImage("Assets/Dwarfmouth.png")
   closingPageImg = loadImage("Assets/closinggame.png")
+  clickNextPageImg = loadImage("Assets/clickadventureintro.png")
   clickAdventureIntroPageImg = ("Assets/clickadventureintropage.png")
 
 }
@@ -126,6 +150,29 @@ function setup() {
     this.textColor = "#FFFFFF";
     this.text = "MOVE";
   };
+
+    //fill('255');
+    //textFont(myFont);
+    //textSize(25);
+    //cnv2 = createCanvas(1000, 1000);
+    //cnv.parent("#canvasDiv");
+
+    //background(66, 40, 14);
+    //frameRate(60);
+    //intText();
+    //button = createButton("Click to start your next Adventure")
+    //button = select('#randButton')
+    //button.mousePressed(buttonPressed);
+    //button.class("randomizerButton");
+    //addMoreButton.mousePresses(buttonPressed);
+    //
+    //for(let i =0; i <3; i++){
+    //nameInputs.push(createInput());
+    //nameInputs[nameInputs. length - 1}.parent("#inputFields")
+  //}
+
+
+
 
   click1.onOutside = function() {
     this.color = "#EEEEEE";
@@ -435,7 +482,6 @@ function draw() {
       text(input3.value(), 700, 82);
       text(input4.value(), 940, 82);
       text(input5.value(), 1240, 82);
-
       break;
 
     case 'avatarEnd':
@@ -449,9 +495,9 @@ function draw() {
       break;
 
     case 'clickAdventureIntroPage':
-    clickAdventureIntroPage();
-    cnv.mouseClicked(clickAdventureIntroPageMouseClicked);
-    break;
+      clickAdventureIntroPage();
+      cnv.mouseClicked(clickAdventureIntroPageMouseClicked);
+      break;
       //case 'clickgame':
       //clickgame();
       //cnv.mouseClicked(endMouseClicked);
@@ -467,6 +513,7 @@ function draw() {
 
 
 }
+
 
 function title() {
   textSize(40);
@@ -485,7 +532,7 @@ function titleMouseClicked() {
 }
 
 function instructions() {
-  image(instructionsImg, 100, 180, 1600, 800);
+  image(instructionsImg, 60, 100, 1680, 1000);
 
 }
 
@@ -501,19 +548,21 @@ function gameScreen() {
   textSize(30);
   //text('GAME', 100, 100);
   avatarBuild()
-  image(cursorImg, mouseX, mouseY);
+  //image(cursorImg, mouseX, mouseY);
 
 }
 
 function gameScreenMouseClicked() {
   console.log('canvas is clicked on level 1');
-  state = 'title'
+  state = 'avatarEnd'
 }
 
 function avatarEnd() {
   background(2);
 
-  image(clickNextPageImg, 80, 100, 1240, 600);
+
+  image(clickNextPageImg, 60, 100, 1680, 1000);
+
   //textSize(20);
   //text('REFRESH TO DESIGN A NEW CHARACTER, ClICK SCREEN FOR NEXT ADVENTURE', 320, 770);
   //stroke(0, 64, 255);
@@ -527,14 +576,15 @@ function avatarEndMouseClicked() {
 
 }
 
+
 function clickNextPage() {
-  image(clickNextPageImg, 80, 100, 1240, 600);
+  image(clickAdventureIntroPageImg, 80, 100, 1240, 600);
 }
 
 
-function clickAdventureIntroPage() {
-  image(clickAdventureIntroPageImg, 80, 100, 1240, 600)
-}
+//function clickAdventureIntroPage() {
+//image(clickAdventureIntroPageImg, 80, 100, 1240, 600)
+//}
 
 
 
