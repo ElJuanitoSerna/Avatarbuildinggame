@@ -479,9 +479,9 @@ function draw() {
       //CHANGE AREA FOR INFO
       text(input.value(), 160, 85);
       text(input2.value(), 460, 85);
-      text(input3.value(), 700, 82);
-      text(input4.value(), 940, 82);
-      text(input5.value(), 1240, 82);
+      text(input3.value(), 740, 82);
+      text(input4.value(), 1100, 82);
+      text(input5.value(), 1400, 82);
       break;
 
     case 'avatarEnd':
