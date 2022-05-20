@@ -93,6 +93,10 @@ var clickAdventureIntroPageImg;
 var closingPage;
 var closingPageImg;
 var avatarEnd;
+//var giftLoadImage;
+//var gif_loadImg, gif_createImg;
+
+//var clickNextPageMouseClicked;
 
 
 function preload() {
@@ -129,8 +133,9 @@ function preload() {
   closingPageImg = loadImage("Assets/closinggame.png")
   clickNextPageImg = loadImage("Assets/clickadventureintro.png")
   clickAdventureIntroPageImg = ("Assets/clickadventureintropage.png")
-
-}
+  //giftLoadImage = loadImage("Assets/Intropage.gif");
+  //gif_createImg = createImg("Assets/Intropage.gif");
+};
 
 function setup() {
   cnv = createCanvas(1800, 1200);
@@ -151,24 +156,26 @@ function setup() {
     this.text = "MOVE";
   };
 
-    //fill('255');
-    //textFont(myFont);
-    //textSize(25);
-    //cnv2 = createCanvas(1000, 1000);
-    //cnv.parent("#canvasDiv");
 
-    //background(66, 40, 14);
-    //frameRate(60);
-    //intText();
-    //button = createButton("Click to start your next Adventure")
-    //button = select('#randButton')
-    //button.mousePressed(buttonPressed);
-    //button.class("randomizerButton");
-    //addMoreButton.mousePresses(buttonPressed);
-    //
-    //for(let i =0; i <3; i++){
-    //nameInputs.push(createInput());
-    //nameInputs[nameInputs. length - 1}.parent("#inputFields")
+  //click next adventure game
+  //fill('255');
+  //textFont(myFont);
+  //textSize(25);
+  //cnv2 = createCanvas(1000, 1000);
+  //cnv.parent("#canvasDiv");
+
+  //background(66, 40, 14);
+  //frameRate(60);
+  //intText();
+  //button = createButton("Click to start your next Adventure")
+  //button = select('#randButton')
+  //button.mousePressed(buttonPressed);
+  //button.class("randomizerButton");
+  //addMoreButton.mousePresses(buttonPressed);
+  //
+  //for(let i =0; i <3; i++){
+  //nameInputs.push(createInput());
+  //nameInputs[nameInputs. length - 1}.parent("#inputFields")
   //}
 
 
@@ -463,7 +470,13 @@ function setup() {
 
 
 function draw() {
+
   switch (state) {
+    case 'introPage':
+      cnv.mouseClicked(introPageMouseClicked);
+      break;
+
+
     case 'title':
       title();
       cnv.mouseClicked(titleMouseClicked);
@@ -487,6 +500,11 @@ function draw() {
     case 'avatarEnd':
       avatarEnd();
       cnv.mouseClicked(avatarEndMouseClicked);
+      break;
+
+    case 'clickNextPage':
+      clickNextPage();
+      cnv.mouseClicked(clickNextPageMouseClicked);
       break;
 
     case 'nextPage':
@@ -514,6 +532,17 @@ function draw() {
 
 }
 
+function introPage() {
+  image(gifLoadImage, 0, 0)
+  //gif_createImg.position(800, 800);
+  //image(gif_loadImg, 50, 50);
+
+}
+
+function introPageMouseClicked() {
+  console.log('canvas is clicked on intro page')
+  state = 'title'
+}
 
 function title() {
   textSize(40);
@@ -533,13 +562,11 @@ function titleMouseClicked() {
 
 function instructions() {
   image(instructionsImg, 60, 100, 1680, 1000);
-
 }
 
 function instructionsMouseClicked() {
   console.log('canvas is clicked on instructions');
   state = 'gameScreen'
-
 }
 
 function gameScreen() {
@@ -549,7 +576,6 @@ function gameScreen() {
   //text('GAME', 100, 100);
   avatarBuild()
   //image(cursorImg, mouseX, mouseY);
-
 }
 
 function gameScreenMouseClicked() {
@@ -559,10 +585,7 @@ function gameScreenMouseClicked() {
 
 function avatarEnd() {
   background(2);
-
-
   image(clickNextPageImg, 60, 100, 1680, 1000);
-
   //textSize(20);
   //text('REFRESH TO DESIGN A NEW CHARACTER, ClICK SCREEN FOR NEXT ADVENTURE', 320, 770);
   //stroke(0, 64, 255);
@@ -576,15 +599,18 @@ function avatarEndMouseClicked() {
 
 }
 
-
 function clickNextPage() {
   image(clickAdventureIntroPageImg, 80, 100, 1240, 600);
+};
+
+function clickNextPage() {
+  console.log('canvas is clicked on clickNext Page')
+  state = clickAdventureIntroPage
 }
 
-
-//function clickAdventureIntroPage() {
-//image(clickAdventureIntroPageImg, 80, 100, 1240, 600)
-//}
+function clickAdventureIntroPage() {
+  image(clickAdventureIntroPageImg, 80, 100, 1240, 600)
+};
 
 
 
@@ -619,7 +645,9 @@ function gameScreen() {
   dwarfEyes.draw();
   dwarfMouth.draw();
 
+  function clickYourNextAdventureGame() {
 
+  }
 
   //ADDNEW  CHARACTER
   //image(backGroundT,200, 200,180,180)
