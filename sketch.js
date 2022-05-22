@@ -472,8 +472,7 @@ function setup() {
 function draw() {
 
   switch (state) {
-    case 'introPage':
-      cnv.mouseClicked(introPageMouseClicked);
+    case 'introPage':cnv.mouseClicked(introPageMouseClicked);
       break;
 
 
@@ -569,19 +568,19 @@ function instructionsMouseClicked() {
   state = 'gameScreen'
 }
 
-function gameScreen() {
-  secondPage.image = secondPage;
-  background(50, 1000, 1000);
-  textSize(30);
+//function gameScreen() {
+  //secondPage.image = secondPage;
+  //background(50, 1000, 1000);
+  //textSize(30);
   //text('GAME', 100, 100);
-  avatarBuild()
+  //avatarBuild()
   //image(cursorImg, mouseX, mouseY);
-}
+//}
 
-function gameScreenMouseClicked() {
-  console.log('canvas is clicked on level 1');
-  state = 'avatarEnd'
-}
+//function gameScreenMouseClicked() {
+  //console.log('canvas is clicked on level 1');
+  //state = 'avatarEnd'
+//}
 
 function avatarEnd() {
   background(2);
@@ -590,13 +589,15 @@ function avatarEnd() {
   //text('REFRESH TO DESIGN A NEW CHARACTER, ClICK SCREEN FOR NEXT ADVENTURE', 320, 770);
   //stroke(0, 64, 255);
   //textColor(255, 255, 255)
+  image(avatarTop, 90, 360, 425, 425);
+  image(avatarMiddle, 90, 380, 425, 425);
+  image(avatarBottom, 90, 400, 425, 425);
 };
 
 function avatarEndMouseClicked() {
   //next state
   console.log('canvas is clicked on avatarEnd');
   state = "clickNextPage";
-
 }
 
 function clickNextPage() {
@@ -604,15 +605,17 @@ function clickNextPage() {
 };
 
 function clickNextPage() {
-  console.log('canvas is clicked on clickNext Page')
-  state = clickAdventureIntroPage
+  console.log('canvas is clicked on clickNextPage')
+  state = "clickAdventureIntroPage";
 }
 
 function clickAdventureIntroPage() {
   image(clickAdventureIntroPageImg, 80, 100, 1240, 600)
 };
 
+function clickNextPageMouseClicked(){
 
+};
 
 
 function gameScreen() {
