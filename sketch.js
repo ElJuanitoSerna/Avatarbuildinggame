@@ -93,6 +93,11 @@ var clickAdventureIntroPageImg;
 var closingPage;
 var closingPageImg;
 var avatarEnd;
+var welcomeToCampaing;
+var welcomeToCampaingImg;
+var clickIfYouDare;
+var clickIfYouDareImg;
+
 //var giftLoadImage;
 //var gif_loadImg, gif_createImg;
 
@@ -133,6 +138,8 @@ function preload() {
   closingPageImg = loadImage("Assets/closinggame.png")
   clickNextPageImg = loadImage("Assets/clickadventureintro.png")
   clickAdventureIntroPageImg = ("Assets/clickadventureintropage.png")
+  welcomeToCampaingImg = ("Assets/welcomeToCampaing.png")
+  clickIfYouDareImg = ("Assets/clickifyoudare.png")
   //giftLoadImage = loadImage("Assets/Intropage.gif");
   //gif_createImg = createImg("Assets/Intropage.gif");
 };
@@ -472,7 +479,18 @@ function setup() {
 function draw() {
 
   switch (state) {
-    case 'introPage':cnv.mouseClicked(introPageMouseClicked);
+  //  case 'clickIfYouDare':
+//cnv.mouseClicked(clickIfYouDareMouseClicked);
+//break;
+
+ //case' welcomeToCampaing'
+ //cnv.mouseClicked(welcomeToCampaingMouseClicked);
+ //break;
+
+
+
+    case 'introPage':
+      cnv.mouseClicked(introPageMouseClicked);
       break;
 
 
@@ -531,17 +549,25 @@ function draw() {
 
 }
 
-function introPage() {
-  image(gifLoadImage, 0, 0)
+
+//function clickIfYouDare(){
+  //image(clickIfYouDare,100,180,1600,800);
+//}
+//function clickIfYouDareMouseClicked(){
+  //console.log('canvas is clicked on click if yu dare');
+  //state = 'instructions'
+//}
+//function introPage() {
+  //image(gifLoadImage, 0, 0)
   //gif_createImg.position(800, 800);
   //image(gif_loadImg, 50, 50);
 
-}
+//}
 
-function introPageMouseClicked() {
-  console.log('canvas is clicked on intro page')
-  state = 'title'
-}
+//function introPageMouseClicked() {
+  //console.log('canvas is clicked on intro page')
+  //state = 'title'
+//}
 
 function title() {
   textSize(40);
@@ -569,17 +595,17 @@ function instructionsMouseClicked() {
 }
 
 //function gameScreen() {
-  //secondPage.image = secondPage;
-  //background(50, 1000, 1000);
-  //textSize(30);
-  //text('GAME', 100, 100);
-  //avatarBuild()
-  //image(cursorImg, mouseX, mouseY);
+//secondPage.image = secondPage;
+//background(50, 1000, 1000);
+//textSize(30);
+//text('GAME', 100, 100);
+//avatarBuild()
+//image(cursorImg, mouseX, mouseY);
 //}
 
 //function gameScreenMouseClicked() {
-  //console.log('canvas is clicked on level 1');
-  //state = 'avatarEnd'
+//console.log('canvas is clicked on level 1');
+//state = 'avatarEnd'
 //}
 
 function avatarEnd() {
@@ -606,14 +632,14 @@ function clickNextPage() {
 
 function clickNextPage() {
   console.log('canvas is clicked on clickNextPage')
-  state = "clickAdventureIntroPage";
+  state = "clickAdventureIntroPage"
 }
 
 function clickAdventureIntroPage() {
   image(clickAdventureIntroPageImg, 80, 100, 1240, 600)
 };
 
-function clickNextPageMouseClicked(){
+function clickNextPageMouseClicked() {
 
 };
 
